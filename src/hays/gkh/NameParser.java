@@ -37,6 +37,9 @@ public class NameParser {
 			"II", "III", "IV", "V", "Senior", "Junior", "Jr", "JR", "Sr", "SR",
 			"PhD", "APR", "RPh", "PE", "MD", "MA", "DMD", "CME" });
 	
+	/**
+	 * Test
+	 */
 	public static void main(String[] args) {
 		String[] testNames = { "Von Fabella", "E. Pitney Bowes", "Dan Rather",
 				"Dr. Jones", "Marcus Welby MD", "Ken Griffey Jr.",
@@ -85,6 +88,18 @@ public class NameParser {
 		return this.suffix;
 	}
 	
+	/**
+	 * Detect compound last names such as "Von Fange."
+	 * 
+	 * Naturally there is a name for these kind of things; in this case it is
+	 * nobiliary particle. See the Wikipedia article: <a
+	 * href="https://en.wikipedia.org/wiki/Nobiliary_particle">Nobiliary
+	 * particle</a>.
+	 * 
+	 * 
+	 * @param s a {@link String} containing the name to test
+	 * @return <code>true</code> if a compound name; otherwise false
+	 */
 	private boolean isCompoundLastName(String s) {
 		String word = s.toLowerCase();
 		for (String n : nobiliaryParticleList) {
@@ -105,10 +120,16 @@ public class NameParser {
 		return s.length() == 1 || (s.length() == 2 && s.contains("."));
 	}
 	
-	// |[A-Z]+|s
-	// (?<=[a-z])(?=[A-Z])
-	// http://stackoverflow.com/a/7599674/6146580
+	/**
+	 * Check to see if the given {@link String} is in Pascal case, e.g.
+	 * "McDonald."
+	 * 
+	 * @param s
+	 *            the {@link String} to examine
+	 * @return <code>true</code> if a match was found; false otherwise
+	 */
 	private boolean isPascalCase(String s) {
+		// Considered (?<=[a-z])(?=[A-Z]).
 		Pattern p = Pattern.compile("(?<=[a-z])(?=[A-Z])");
 		Matcher m = p.matcher(s);
 		return m.find();
@@ -189,6 +210,14 @@ public class NameParser {
 		return sb.toString();
 	}
 
+	/**
+	 * 
+	 * @param word
+	 * @param delimiter
+	 * @return
+	 * 
+	 * @since 1.8
+	 */
 	private String safeUpperCaseFirst(String word, String delimiter) {
 		String[] parts = word.split(delimiter);
 		String[] words = new String[parts.length];
@@ -202,6 +231,19 @@ public class NameParser {
 		return String.join(delimiter, Arrays.toString(words));
 	}
 	
+	/**
+	 * Splits a full name into the following parts:
+	 * <ul>
+	 * <li>Honorific, e.g. Mr., Mrs., Ms., etc.</li>
+	 * <li>Given name or first name</li>
+	 * <li>Surname or last name</li>
+	 * <li>Given name or first name</li>
+	 * <li>Suffix, e.g. II, Sr., PhD, etc.</li>
+	 * </ul>
+	 * 
+	 * @param s
+	 *            a {@link String} containing the full name to split
+	 */
 	public void splitFullName(String s) {
 		// TODO: We can call splitFullName multiple times, which leaves some
 		// baggage in the initial for each run. Quick hack below.
@@ -271,7 +313,13 @@ public class NameParser {
 		}
 	}
 	
-	// http://stackoverflow.com/a/5725949/6146580
+	/**
+	 * Uppercase the first character in a given {@link String}.
+	 * 
+	 * @param s
+	 *            the {@link String} upon which to operate
+	 * @return a {@link String} with the first character in uppercase
+	 */
 	private String upperCaseFirst(String s) {
 		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
