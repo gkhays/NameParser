@@ -24,6 +24,10 @@ Ported from [php-name-parser](https://code.google.com/archive/p/php-name-parser/
 [    ]    William | S.      Gates [ III]
 [    ]         La |        Alpaca [    ]
 [    ]     Murray | F.    Abraham [    ]
+[ Mr.]        Ted |        Knight [Esq.]
+[    ]       June |       Cleaver [    ]
+[ Mr.]     Robert |         Jones [    ]
+[    ]    Cynthia |         Adams [    ]
 ```
 
 PHP has a handy [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php) utility that is used in the original implementation. It turns out a Java implementation has already been discussed on StackOverflow in the article "[How to capitalize the first letter of word in a string using java?](http://stackoverflow.com/a/5725949/6146580)."
