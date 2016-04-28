@@ -1,4 +1,6 @@
 /*
+ * NameParser - Parse names into first, last, initials, etc.
+ * 
  * (C) Copyright 2016 Garve Hays and others.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +37,8 @@ public class NameParser {
 			"mr", "master", "mister", "mrs", "miss", "ms", "dr", "rev", "fr" });
 	private static List<String> suffixList = Arrays.asList(new String[] { "I",
 			"II", "III", "IV", "V", "Senior", "Junior", "Jr", "JR", "Sr", "SR",
-			"PhD", "APR", "RPh", "PE", "MD", "MA", "DMD", "CME" });
+			"PhD", "APR", "RPh", "PE", "MD", "MA", "DMD", "CME", "Esq",
+			"Esquire" });
 	
 	/**
 	 * Test
@@ -45,7 +48,9 @@ public class NameParser {
 				"Dr. Jones", "Marcus Welby MD", "Ken Griffey Jr.",
 				"Jack Jones M.D.", "E. Pluribus Unum", "Don R. Draper",
 				"William S. Gates SR", "William S. Gates III",
-				"Anthony de la Alpaca", "F. Murray Abraham" };
+				"Anthony de la Alpaca", "F. Murray Abraham",
+				"Mr. Ted Knight Esquire", "Mrs. June Cleaver",
+				"Mr. Robert Jones", "Ms. Cynthia Adams" };
 		NameParser parser = new NameParser();
 		for (String s : testNames) {
 			parser.splitFullName(s);
@@ -182,8 +187,14 @@ public class NameParser {
 	}
 	
 	private String parseSuffix(String s) {
-		if (isSuffix(s)) {
-			return s;
+		String suffix = s;
+		if (isSuffix(suffix)) {
+			// Esquire should be abbreviated as "Esq." per Emily Post; see
+			// http://emilypost.com/advice/the-correct-use-of-esquire/.
+			if (suffix.toLowerCase().startsWith("esq")) {
+				suffix = "Esq.";
+			}
+			return suffix;
 		}
 		return "";
 	}
