@@ -228,7 +228,7 @@ public class NameParser {
 			count++;
 		}
 		// Requires Java 8.
-		return String.join(delimiter, Arrays.toString(words));
+		return String.join(delimiter, words);
 	}
 	
 	/**
