@@ -1,4 +1,5 @@
 # NameParser
+
 Parses a name into various parts including:
 
 * Honorific
@@ -22,3 +23,9 @@ function is_camel_case($word) {
 ```
 
 However, I thought I could get the match in a single regular expression. Sure enough, I quickly found one without having to get my hands dirty with the [Online regex tester and debugger](https://regex101.com/#pcre); see "[RegEx to split camelCase or TitleCase (advanced)](http://stackoverflow.com/a/7599674/6146580)."
+
+## Credits & License
+
+* Based on the [PHP-Name-Parser](http://www.onlineaspect.com/2009/08/17/splitting-names/) by [Josh Fraser](https://github.com/joshfraser).
+* Ported to Java by Garve Hays.
+* Released under the Apache 2.0 License.
