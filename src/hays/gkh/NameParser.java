@@ -30,7 +30,7 @@ public class NameParser {
 	private static List<String> nobiliaryParticleList = Arrays
 			.asList(new String[] { "vere", "von", "van", "de", "del", "della",
 					"di", "da", "pietro", "vanden", "du", "st.", "st", "la",
-					"ter", "al", "ibn", "de la" });
+					"ter", "al", "ibn", "de la", "van der" });
 	private static List<String> salutationList = Arrays.asList(new String[] {
 			"mr", "master", "mister", "mrs", "miss", "ms", "dr", "rev", "fr" });
 	private static List<String> suffixList = Arrays.asList(new String[] { "I",
@@ -45,11 +45,11 @@ public class NameParser {
 				"Dr. Jones", "Marcus Welby MD", "Ken Griffey Jr.",
 				"Jack Jones M.D.", "E. Pluribus Unum", "Don R. Draper",
 				"William S. Gates SR", "William S. Gates III",
-				"Anthony de la Alpaca" };
+				"Anthony de la Alpaca", "F. Murray Abraham" };
 		NameParser parser = new NameParser();
 		for (String s : testNames) {
 			parser.splitFullName(s);
-			System.out.printf("[%4s] %10s %2s %10s [%4s]\n",
+			System.out.printf("[%4s] %10s | %2s %10s [%4s]\n",
 					parser.getHonorific(), parser.getFirstName(),
 					parser.getInitials(), parser.getLastName(),
 					parser.getSuffix());
@@ -84,7 +84,7 @@ public class NameParser {
 		return this.lastName;
 	}
 	
-	private Object getSuffix() {
+	public Object getSuffix() {
 		return this.suffix;
 	}
 	
