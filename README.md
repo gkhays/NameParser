@@ -42,7 +42,16 @@ function is_camel_case($word) {
 }
 ```
 
-However, I thought I could get the match in a single regular expression. Sure enough, I quickly found one without having to get my hands dirty with the [Online regex tester and debugger](https://regex101.com/#pcre); see "[RegEx to split camelCase or TitleCase (advanced)](http://stackoverflow.com/a/7599674/6146580)."
+However, I thought I could get the match in a single regular expression.
+
+```java
+// Considered (?<=[a-z])(?=[A-Z]).
+Pattern p = Pattern.compile("(?<=[a-z])(?=[A-Z])");
+Matcher m = p.matcher(s);
+return m.find();
+```
+
+Sure enough, I quickly found one without having to get my hands too "dirty!" :smile: I tested it with the [Online regex tester and debugger](https://regex101.com/#pcre); see "[RegEx to split camelCase or TitleCase (advanced)](http://stackoverflow.com/a/7599674/6146580)."
 
 ## Credits & License
 
