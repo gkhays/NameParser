@@ -51,7 +51,7 @@ Matcher m = p.matcher(s);
 return m.find();
 ```
 
-Sure enough, I quickly found one without having to get my hands too "dirty!" :smile: I tested it with the [Online regex tester and debugger](https://regex101.com/#pcre); see "[RegEx to split camelCase or TitleCase (advanced)](http://stackoverflow.com/a/7599674/6146580)."
+Sure enough, I quickly found one without having to get my hands too "dirty!" :smile: See "[RegEx to split camelCase or TitleCase (advanced)](http://stackoverflow.com/a/7599674/6146580)." I tested it with the [Online regex tester and debugger](https://regex101.com/#pcre); 
 
 ## Credits & License
 
